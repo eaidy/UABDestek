@@ -1,6 +1,6 @@
 <template>
-  <v-app dark>
-    <div>
+  <v-app>
+    <div style="width:800px;margin:auto;">
       <v-btn color="secondary">
         <NuxtLink to="/admin-tickets" style="color:antiquewhite;text-decoration:none;">Admin Tickets</NuxtLink>
       </v-btn>
