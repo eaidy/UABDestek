@@ -44,21 +44,43 @@
             ></v-select>
             <v-text-field label="Konu" outlined class="mb-6"></v-text-field>
             <v-textarea label="Açıklama" outlined></v-textarea>
-            <v-text-field
-              label="Etiketler"
-              outlined
-              v-model="tempTag"
-              @keyup.enter="tagHandler"
-            ></v-text-field>
+            <v-row>
+              <v-col cols="6">
+                <v-text-field
+                  label="Etiketler"
+                  outlined
+                  v-model="temp.tag"
+                  @keyup.enter="addHandler"
+                ></v-text-field>
 
-            <div class="tags">
-              <span 
-                class="tag" 
-                v-for="tag in tags" 
-                :key="tag"
-                @click="tagDelete(tag)"
-              >{{ tag }}</span>
-            </div>
+                <div class="tags">
+                  <span 
+                    class="tag" 
+                    v-for="tag in tags" 
+                    :key="tag"
+                    @click="deleteHandler(tag)"
+                  >{{ tag }}</span>
+                </div>
+
+              </v-col>
+              <v-col cols="6">
+                <v-text-field 
+                  label="İlgili Kişiler" 
+                  outlined 
+                  v-model="temp.person"
+                  @keyup.enter="addPerson"
+                >
+                </v-text-field>
+                <div class="tags">
+                  <span 
+                    class="tag" 
+                    v-for="person in people" 
+                    :key="person"
+                    @click="deletePerson(person)"
+                  >{{ person }}</span>
+                </div>
+              </v-col>
+            </v-row>
 
             <div class="d-flex mt-8">
               <v-btn color="primary" @click="dialog = false"> Gönder </v-btn>
@@ -102,23 +124,36 @@ export default {
     return {
       dialog: false,
       modules: [
-        'Proje Yönetim',
-        'UYS',
-        'UAB'
+        'Modül 1',
+        'Modül 2',
+        'Modül 3'
       ],
       tags: [],
-      tempTag: ''
+      people: [],
+      temp: {
+        tag: '',
+        person: ''
+      }
     };
   },
   methods: {
-    tagHandler (e) {
-      if ( !this.tags.includes(this.tempTag) ){
-        this.tags.push(e.target.value)
-      }
-      this.tempTag = ''
+    addHandler (e) {
+        if ( !this.tags.includes(this.temp.tag) ){
+          this.tags.push(this.temp.tag)
+        }
+        this.temp.tag = ''
     },
-    tagDelete (tag) {
+    deleteHandler (tag) {
       this.tags.splice(this.tags.indexOf(tag), 1)
+    },
+    addPerson () {
+        if ( !this.people.includes(this.temp.person) ){
+          this.people.push(this.temp.person)
+        }
+        this.temp.person = ''
+    },
+    deletePerson (person) {
+      this.people.splice(this.people.indexOf(person), 1)
     }
   }
 };
