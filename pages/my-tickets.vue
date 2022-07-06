@@ -21,6 +21,9 @@
       :sort-desc="[false, true]"
       multi-sort
       class="elevation-1 mt-15"
+      :footer-props="{
+        'items-per-page-text': 'Sayfa başına satır'
+      }"
     ></v-data-table>
   </v-container>
 </template>
