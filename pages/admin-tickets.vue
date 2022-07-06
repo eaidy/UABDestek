@@ -4,41 +4,46 @@
       <div class="card-bg">
         <v-row class="align-content-end">
           <v-col cols="12" md="2">
+            <v-subheader>Gruplama</v-subheader>
+            <v-select
+              v-model="firstname"
+              label="Gruplama Seçimi"
+              solo
+              dense
+            ></v-select>
+          </v-col>
+          <v-col cols="12" md="2">
+            <v-subheader>Başlangıç Tarihi</v-subheader>
             <v-text-field
               v-model="firstname"
-              label="Solo"
+              label="25.03.2022"
               solo
               dense
             ></v-text-field>
           </v-col>
           <v-col cols="12" md="2">
+            <v-subheader>Bitiş Tarihi</v-subheader>
             <v-text-field
               v-model="firstname"
-              label="Solo"
+              label="16.04.2022"
               solo
               dense
             ></v-text-field>
           </v-col>
           <v-col cols="12" md="2">
-            <v-text-field
+            <v-subheader>Ticket Durumu</v-subheader>
+            <v-select
               v-model="firstname"
-              label="Solo"
+              label="DOĞRU"
               solo
               dense
-            ></v-text-field>
+            ></v-select>
           </v-col>
           <v-col cols="12" md="2">
+            <v-subheader>Kurumu</v-subheader>
             <v-text-field
               v-model="firstname"
-              label="Solo"
-              solo
-              dense
-            ></v-text-field>
-          </v-col>
-          <v-col cols="12" md="2">
-            <v-text-field
-              v-model="firstname"
-              label="Solo"
+              label="TCDD"
               solo
               dense
             ></v-text-field>
@@ -69,10 +74,13 @@
     <v-data-table
       :headers="headers"
       :items="desserts"
-      :sort-by="['calories', 'fat']"
+      :sort-by="['queue']"
       :sort-desc="[false, true]"
       multi-sort
       class="elevation-1 mt-15"
+      :footer-props="{
+        'items-per-page-text': 'Sayfa başına satır'
+      }"
     ></v-data-table>
   </v-container>
 </template>
@@ -83,98 +91,55 @@ export default {
     return {
       headers: [
         {
-          text: "Dessert (100g serving)",
-          align: "start",
-          sortable: false,
-          value: "name",
+          text: "Sıra",
+          align: "center",
+          sortable: true,
+          value: "queue",
         },
-        { text: "Calories", value: "calories" },
-        { text: "Fat (g)", value: "fat" },
-        { text: "Carbs (g)", value: "carbs" },
-        { text: "Protein (g)", value: "protein" },
-        { text: "Iron (%)", value: "iron" },
+        { text: "Tarih", value: "begindate" },
+        { text: "Talep Sahibi", value: "ticketowner" },
+        { text: "Kurumu", value: "institution" },
+        { text: "Talep", value: "ticketsubject" },
+        { text: "Sorumlu", value: "personincharge" },
+        { text: "Onaylayan", value: "confirmer" },
+        { text: "Durumu", value: "state" },
+        { text: "Tarih", value: "enddate" },
+        
       ],
       desserts: [
         {
-          name: "Frozen Yogurt",
-          calories: 200,
-          fat: 6.0,
-          carbs: 24,
-          protein: 4.0,
-          iron: "1%",
+          queue: 1,
+          begindate: '23.05.2022',
+          ticketowner: 'Doruk Yormaz',
+          institution: 'TCDD',
+          ticketsubject: 'KML dosyası yükleyememe problemi',
+          personincharge: 'Bensu Keşap',
+          confirmer: 'Cem Karakuş',
+          state: 'DOĞRU',
+          enddate: '23.05.2022'
+        },
+        { 
+          queue: 2,
+          begindate: '23.05.2022',
+          ticketowner: 'Elif Atar',
+          institution: 'TCDD',
+          ticketsubject: 'Proje veri girememe problemi',
+          personincharge: 'Bensu Keşap',
+          confirmer: 'Cem Karakuş',
+          state: 'DOĞRU',
+          enddate: '23.05.2022'
         },
         {
-          name: "Ice cream sandwich",
-          calories: 200,
-          fat: 9.0,
-          carbs: 37,
-          protein: 4.3,
-          iron: "1%",
-        },
-        {
-          name: "Eclair",
-          calories: 300,
-          fat: 16.0,
-          carbs: 23,
-          protein: 6.0,
-          iron: "7%",
-        },
-        {
-          name: "Cupcake",
-          calories: 300,
-          fat: 3.7,
-          carbs: 67,
-          protein: 4.3,
-          iron: "8%",
-        },
-        {
-          name: "Gingerbread",
-          calories: 400,
-          fat: 16.0,
-          carbs: 49,
-          protein: 3.9,
-          iron: "16%",
-        },
-        {
-          name: "Jelly bean",
-          calories: 400,
-          fat: 0.0,
-          carbs: 94,
-          protein: 0.0,
-          iron: "0%",
-        },
-        {
-          name: "Lollipop",
-          calories: 400,
-          fat: 0.2,
-          carbs: 98,
-          protein: 0,
-          iron: "2%",
-        },
-        {
-          name: "Honeycomb",
-          calories: 400,
-          fat: 3.2,
-          carbs: 87,
-          protein: 6.5,
-          iron: "45%",
-        },
-        {
-          name: "Donut",
-          calories: 500,
-          fat: 25.0,
-          carbs: 51,
-          protein: 4.9,
-          iron: "22%",
-        },
-        {
-          name: "KitKat",
-          calories: 500,
-          fat: 26.0,
-          carbs: 65,
-          protein: 7,
-          iron: "6%",
-        },
+          queue: 3,
+          begindate: '23.05.2022',
+          ticketowner: 'Önder Çelik',
+          institution: 'TCDD',
+          ticketsubject: 'Yeni yüklenici eklenmesi talebi',
+          personincharge: 'Bensu Keşap',
+          confirmer: 'Cem Karakuş',
+          state: 'DOĞRU',
+          enddate: '23.05.2022'
+        }
       ],
     };
   },
