@@ -36,9 +36,30 @@
           </v-card-title>
 
           <v-card-text class="mt-4">
-            <v-text-field label="Outlined" outlined class="mb-6"></v-text-field>
-            <v-text-field label="Outlined" outlined class="mb-6"></v-text-field>
-            <v-text-field label="Outlined" outlined></v-text-field>
+            <v-select 
+              label="Modül Seçiniz" 
+              outlined 
+              class="mb-6"
+              :items="modules"
+            ></v-select>
+            <v-text-field label="Konu" outlined class="mb-6"></v-text-field>
+            <v-textarea label="Açıklama" outlined></v-textarea>
+            <v-text-field
+              label="Etiketler"
+              outlined
+              v-model="tempTag"
+              @keyup.enter="tagHandler"
+            ></v-text-field>
+
+            <div class="tags">
+              <span 
+                class="tag" 
+                v-for="tag in tags" 
+                :key="tag"
+                @click="tagDelete(tag)"
+              >{{ tag }}</span>
+            </div>
+
             <div class="d-flex mt-8">
               <v-btn color="primary" @click="dialog = false"> Gönder </v-btn>
               <v-btn
@@ -80,7 +101,40 @@ export default {
   data() {
     return {
       dialog: false,
+      modules: [
+        'Proje Yönetim',
+        'UYS',
+        'UAB'
+      ],
+      tags: [],
+      tempTag: ''
     };
   },
+  methods: {
+    tagHandler (e) {
+      if ( !this.tags.includes(this.tempTag) ){
+        this.tags.push(e.target.value)
+      }
+      this.tempTag = ''
+    },
+    tagDelete (tag) {
+      this.tags.splice(this.tags.indexOf(tag), 1)
+    }
+  }
 };
 </script>
+
+<style>
+
+.tag {
+  border-radius: 4px;
+  border: solid 1px gray;
+  margin-right: 4px;
+  padding: 4px;
+}
+
+.tags {
+  padding-left: 4px;
+}
+
+</style>
