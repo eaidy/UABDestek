@@ -73,7 +73,7 @@
 
     <v-data-table
       :headers="headers"
-      :items="desserts"
+      :items="tickets"
       :sort-by="['queue']"
       :sort-desc="[false, true]"
       multi-sort
@@ -104,9 +104,8 @@ export default {
         { text: "Onaylayan", value: "confirmer" },
         { text: "Durumu", value: "state" },
         { text: "Tarih", value: "enddate" },
-        
       ],
-      desserts: [
+      tickets: [
         {
           queue: 1,
           begindate: '23.05.2022',
