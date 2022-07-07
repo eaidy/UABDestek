@@ -59,12 +59,14 @@ export default {
                 {
                     text: 'Destek-Talep',
                     disabled: false,
-                    href: 'support-topics'
+                    href: 'support-topics',
+                    nuxt: true
                 },
                 {
                     text: 'Öneri-Şikayet',
                     disabled: false,
-                    href: 'support-topics'
+                    href: 'support-topics',
+                    nuxt: true
                 }
             ],
             tickets: [
