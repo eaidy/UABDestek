@@ -23,6 +23,9 @@
         <v-btn text class="nav-btn mr-2">
           <NuxtLink to="/ticket-ac">Ticket Aç</NuxtLink>
         </v-btn>
+        <v-btn text class="nav-btn mr-2">
+          <NuxtLink to="/support-topics">Destek Başlıkları</NuxtLink>
+        </v-btn>
       </v-toolbar>
     </v-card>
 
