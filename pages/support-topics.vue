@@ -25,10 +25,11 @@
         <v-row class="items-section elevation-2">
             <v-col col="6">
                 <div>
-                    <div class="sub-header ml-3">
+                    <div class="sub-header ml-3 mb-3">
                         <v-icon class="mb-1">mdi-file-document-check</v-icon> Destek Talepleri
                     </div>
-                    <div class="ml-6 mt-2">
+                    <v-divider></v-divider>
+                    <div class="ml-6 mt-4">
                         <div v-for="ticket in tickets" :key="ticket.id" class="mb-1">
                             <v-icon small>mdi-pencil</v-icon>
                             <span class="ml-2 list-element">
@@ -42,11 +43,12 @@
             </v-col>
             <v-col col="6">
                 <div>
-                    <div class="sub-header ml-3">
+                    <div class="sub-header ml-3 mb-3">
                         <v-icon class="mb-1">mdi-file-document-edit</v-icon> Öneri ve Şikayetler
                     </div>
-                    <div class="ml-6 mt-2">
-                        <div v-for="suggest in suggests" :key="suggest.id">
+                    <v-divider></v-divider>
+                    <div class="ml-6 mt-4">
+                        <div v-for="suggest in suggests" :key="suggest.id" class="mb-1">
                             <v-icon small>mdi-pencil</v-icon><span class="ml-2 list-element"><a href="/support-topics">{{ suggest.subject }}</a></span>
                         </div>
                     </div>
