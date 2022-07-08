@@ -92,9 +92,69 @@ export default {
                     ticketNo: 3,
                     subject: 'KML Dosyası eklerken hata alıyorum',
                     exp: 'Lorem ipsum narem pipsum'
+                },
+                {
+                    ticketNo: 1,
+                    subject: 'Modül 2 içerisindeki yazılım hatası',
+                    exp: 'Lorem ipsum narem pipsum',
+                },
+                {
+                    ticketNo: 2,
+                    subject: 'Proje editleme sorunu ile ilgili',
+                    exp: 'Lorem ipsum narem pipsum'
+                },
+                {
+                    ticketNo: 3,
+                    subject: 'KML Dosyası eklerken hata alıyorum',
+                    exp: 'Lorem ipsum narem pipsum'
+                },
+                {
+                    ticketNo: 1,
+                    subject: 'Modül 2 içerisindeki yazılım hatası',
+                    exp: 'Lorem ipsum narem pipsum',
+                },
+                {
+                    ticketNo: 2,
+                    subject: 'Proje editleme sorunu ile ilgili',
+                    exp: 'Lorem ipsum narem pipsum'
+                },
+                {
+                    ticketNo: 3,
+                    subject: 'KML Dosyası eklerken hata alıyorum',
+                    exp: 'Lorem ipsum narem pipsum'
                 }
             ],
             suggests: [
+                {
+                    ticketNo: 1,
+                    subject: 'Proje yönetim sistemi ekranı ile ilgili önerim',
+                    exp: 'Lorem ipsum narem pipsum'
+                },
+                {
+                    ticketNo: 2,
+                    subject: 'Destek taleplerinin daha hızlı sonuçlanması gerekiyor',
+                    exp: 'Lorem ipsum narem pipsum'
+                },
+                {
+                    ticketNo: 3,
+                    subject: 'Kullanıcı arayüzündeki ergonomik eksiklikler',
+                    exp: 'Lorem ipsum narem pipsum'
+                },
+                {
+                    ticketNo: 1,
+                    subject: 'Proje yönetim sistemi ekranı ile ilgili önerim',
+                    exp: 'Lorem ipsum narem pipsum'
+                },
+                {
+                    ticketNo: 2,
+                    subject: 'Destek taleplerinin daha hızlı sonuçlanması gerekiyor',
+                    exp: 'Lorem ipsum narem pipsum'
+                },
+                {
+                    ticketNo: 3,
+                    subject: 'Kullanıcı arayüzündeki ergonomik eksiklikler',
+                    exp: 'Lorem ipsum narem pipsum'
+                },
                 {
                     ticketNo: 1,
                     subject: 'Proje yönetim sistemi ekranı ile ilgili önerim',
