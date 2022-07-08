@@ -4,7 +4,7 @@
       <div class="card-bg">
         <v-row class="align-content-end">
           <v-col cols="12" md="2">
-            <v-subheader>Gruplama</v-subheader>
+            <v-subheader class="pl-1">Gruplama</v-subheader>
             <v-select
               v-model="firstname"
               label="Gruplama Seçimi"
@@ -13,7 +13,7 @@
             ></v-select>
           </v-col>
           <v-col cols="12" md="2">
-            <v-subheader>Başlangıç Tarihi</v-subheader>
+            <v-subheader class="pl-1">Başlangıç Tarihi</v-subheader>
             <v-text-field
               v-model="firstname"
               label="25.03.2022"
@@ -22,7 +22,7 @@
             ></v-text-field>
           </v-col>
           <v-col cols="12" md="2">
-            <v-subheader>Bitiş Tarihi</v-subheader>
+            <v-subheader class="pl-1">Bitiş Tarihi</v-subheader>
             <v-text-field
               v-model="firstname"
               label="16.04.2022"
@@ -31,7 +31,7 @@
             ></v-text-field>
           </v-col>
           <v-col cols="12" md="2">
-            <v-subheader>Ticket Durumu</v-subheader>
+            <v-subheader class="pl-1">Ticket Durumu</v-subheader>
             <v-select
               v-model="firstname"
               label="DOĞRU"
@@ -40,7 +40,7 @@
             ></v-select>
           </v-col>
           <v-col cols="12" md="2">
-            <v-subheader>Kurumu</v-subheader>
+            <v-subheader class="pl-1">Kurumu</v-subheader>
             <v-text-field
               v-model="firstname"
               label="TCDD"
@@ -49,9 +49,9 @@
             ></v-text-field>
           </v-col>
           <v-col cols="12" md="2">
+            <v-subheader class="pl-1"> </v-subheader> 
             <v-btn color="blue-grey" class="white--text w-100">
               Listele
-              <v-icon right dark> mdi-plus </v-icon>
             </v-btn>
           </v-col>
         </v-row>
@@ -96,6 +96,7 @@ export default {
           sortable: true,
           value: "queue",
         },
+        { text: "Talep No.", value: "ticketno"},
         { text: "Tarih", value: "begindate" },
         { text: "Talep Sahibi", value: "ticketowner" },
         { text: "Kurumu", value: "institution" },
@@ -108,6 +109,7 @@ export default {
       tickets: [
         {
           queue: 1,
+          ticketno: "TIC1001",
           begindate: '23.05.2022',
           ticketowner: 'Doruk Yormaz',
           institution: 'TCDD',
@@ -119,6 +121,7 @@ export default {
         },
         { 
           queue: 2,
+          ticketno: "TIC2038",
           begindate: '23.05.2022',
           ticketowner: 'Elif Atar',
           institution: 'TCDD',
@@ -130,6 +133,7 @@ export default {
         },
         {
           queue: 3,
+          ticketno: "TIC1587",
           begindate: '23.05.2022',
           ticketowner: 'Önder Çelik',
           institution: 'TCDD',

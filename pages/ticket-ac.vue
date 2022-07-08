@@ -26,25 +26,43 @@
       <v-dialog v-model="dialog" width="800">
         <template v-slot:activator="{ on, attrs }">
           <v-btn color="red lighten-2" dark v-bind="attrs" v-on="on">
-            Click Me
+            Talep Oluştur
           </v-btn>
         </template>
 
         <v-card>
-          <v-card-title class="text-h5 grey lighten-2">
-            Mesaj Gönder
+          <v-card-title class="justify-center">
+            Talep Oluştur
           </v-card-title>
 
+          <v-divider></v-divider>
+
           <v-card-text class="mt-4">
-            <v-select 
-              label="Modül Seçiniz" 
-              outlined 
-              class="mb-6"
-              :items="modules"
-            ></v-select>
+            <v-container>
+              <v-row>
+                <v-col cols="6" class="pl-0">
+                  <v-select 
+                    label="Modül Seçiniz" 
+                    outlined 
+                    class="mb-6"
+                    :items="modules"
+                  ></v-select>
+                </v-col>
+                <v-col cols="6">
+                  <v-select 
+                    label="Ticket Tipini Seçiniz" 
+                    outlined 
+                    class="mb-6"
+                    :items="ticketTypes"
+                  ></v-select>
+                </v-col>
+              </v-row>
+            </v-container>
+
             <v-text-field label="Konu" outlined class="mb-6"></v-text-field>
             <v-textarea label="Açıklama" outlined></v-textarea>
-            <v-row>
+
+            <!-- <v-row>
               <v-col cols="6">
                 <v-text-field
                   label="Etiketler"
@@ -80,7 +98,7 @@
                   >{{ person }}</span>
                 </div>
               </v-col>
-            </v-row>
+            </v-row> -->
 
             <div class="d-flex mt-8">
               <v-btn color="primary" @click="dialog = false"> Gönder </v-btn>
@@ -127,6 +145,11 @@ export default {
         'Modül 1',
         'Modül 2',
         'Modül 3'
+      ],
+      ticketTypes: [
+        'Şifre Değiştirme',
+        'Destek-Talep',
+        'Öneri-Şikayet'
       ],
       tags: [],
       people: [],

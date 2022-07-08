@@ -13,10 +13,16 @@
                     ></v-breadcrumbs>
                 </div>
                 <v-divider></v-divider>
+                <br />
+                <v-text-field
+                    label="Arama"
+                    placeholder="Arama Yapmak İstediğiniz Konu Giriniz"
+                    outlined
+                ></v-text-field>
             </v-col>
         </v-row>
 
-        <v-row class="items-section">
+        <v-row class="items-section elevation-2">
             <v-col col="6">
                 <div>
                     <div class="sub-header ml-3">
@@ -137,7 +143,7 @@ export default {
 }
 
 .items-section {
-    background-color: #F1EEE9;
+    background-color: #EFEFEF;
     border-radius: 10px;
 }
 
