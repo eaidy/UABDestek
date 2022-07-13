@@ -3,7 +3,7 @@
         <v-row class="ma-4">
             <v-col cols="12">
                 <div class="header">
-                    Uygun Başlıklar
+                    Uygun Başlıklar Ata
                 </div>
                 <div>
                     <v-breadcrumbs
