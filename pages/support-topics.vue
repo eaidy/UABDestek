@@ -69,13 +69,14 @@
                 ></v-breadcrumbs>
               </div>
             </div>
-            <v-divider></v-divider>
-            <br />
             <v-text-field
+              class="mt-15"
               label="Arama"
               placeholder="Arama Yapmak İstediğiniz Konu Giriniz"
               background-color="#fff"
-              outlined
+              filled
+              rounded
+              dense
             ></v-text-field>
           </v-col>
 >>>>>>> cd1b171768eed2bbf5fef2c5ca5637e6dad5e1b6
@@ -85,15 +86,19 @@
     <v-container class="mt-8">
       <v-row class="">
         <v-col col="6">
-          <div class="default-card">
-            <div class="sub-header ml-3 mb-3">
+          <div class="default-card-plain">
+            <div class="sub-header mb-3">
               <v-icon class="mb-1">mdi-file-document-check</v-icon> Destek
               Talepleri
             </div>
             <v-divider></v-divider>
-            <div class="ml-6 mt-4">
-              <div v-for="ticket in tickets" :key="ticket.id" class="mb-1">
-                <v-icon small>mdi-pencil</v-icon>
+            <div class="mt-4">
+              <div
+                v-for="ticket in tickets"
+                :key="ticket.id"
+                class="topic-list-item"
+              >
+                <v-icon small>mdi-file-document</v-icon>
                 <span class="ml-2 list-element">
                   <a href="/support-topics">
                     {{ ticket.subject }}
@@ -104,15 +109,19 @@
           </div>
         </v-col>
         <v-col col="6">
-          <div class="default-card">
-            <div class="sub-header ml-3 mb-3">
+          <div class="default-card-plain">
+            <div class="sub-header mb-3">
               <v-icon class="mb-1">mdi-file-document-edit</v-icon> Öneri ve
               Şikayetler
             </div>
             <v-divider></v-divider>
-            <div class="ml-6 mt-4">
-              <div v-for="suggest in suggests" :key="suggest.id" class="mb-1">
-                <v-icon small>mdi-pencil</v-icon
+            <div class="mt-4">
+              <div
+                v-for="suggest in suggests"
+                :key="suggest.id"
+                class="topic-list-item"
+              >
+                <v-icon small>mdi-file-document</v-icon
                 ><span class="ml-2 list-element"
                   ><a href="/support-topics">{{ suggest.subject }}</a></span
                 >
