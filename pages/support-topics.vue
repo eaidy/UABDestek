@@ -3,7 +3,6 @@
     <section class="search-bg">
       <v-container>
         <v-row class="ma-4">
-<<<<<<< HEAD
             <v-col cols="12">
                 <div class="header">
                     Uygun Başlıklar Ata
@@ -57,29 +56,6 @@
                     </div>
                 </div>
             </v-col>
-=======
-          <v-col cols="12">
-            <div class="text-center">
-              <div class="page-title">Uygun Başlıklar</div>
-              <div>
-                <v-breadcrumbs
-                  :items="links"
-                  divider="/"
-                  class="justify-center"
-                ></v-breadcrumbs>
-              </div>
-            </div>
-            <v-text-field
-              class="mt-15"
-              label="Arama"
-              placeholder="Arama Yapmak İstediğiniz Konu Giriniz"
-              background-color="#fff"
-              filled
-              rounded
-              dense
-            ></v-text-field>
-          </v-col>
->>>>>>> cd1b171768eed2bbf5fef2c5ca5637e6dad5e1b6
         </v-row>
       </v-container>
     </section>
@@ -282,8 +258,4 @@ export default {
   background-color: #efefef;
   border-radius: 10px;
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> cd1b171768eed2bbf5fef2c5ca5637e6dad5e1b6
 </style>

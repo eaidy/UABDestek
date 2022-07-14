@@ -83,11 +83,18 @@
       }"
     >
       <template #item.actions="{ item }">
-        <v-btn text class="nav-btn" @click="answerDialog = true">
-          Yanıtla
-        </v-btn>
+        <v-icon text class="nav-btn" @click="answerDialog = true">
+          mdiPencil
+        </v-icon>
+        <v-icon> <!-- Kapat -->
+
+        </v-icon>
+        <v-icon>  <!-- Sil -->
+
+        </v-icon>
       </template>
     </v-data-table>
+
       <v-dialog v-model="answerDialog" :width="expandedWidth">
         <v-card>
           <v-card-title class="justify-center">
@@ -97,7 +104,7 @@
           <v-divider></v-divider>
           <v-container>
             <v-row>
-              <v-col class="vertical-rule">
+              <v-col class="">
                 <v-card-text class="mt-4">
                   <v-container>
                     <v-row>
@@ -154,11 +161,11 @@
                         <v-card-actions>
                           <v-spacer></v-spacer>
                           <div class="d-flex justify-space-between align-items-center w-100">
-                            <div class="w-300" style="width: 300px">
+                            <div class="w-300" style="width: 300px;">
                               <v-file-input
                                 accept="image/*"
                                 label="Dosya Ekleyin"
-                                style="width: 300px"
+                                style="width: 300px;"
                               ></v-file-input>
                             </div>
                             <v-btn color="primary" text @click="dialog = false">
@@ -170,7 +177,7 @@
                     </v-row>
                   </v-container>
                 </v-card-text>
-              </v-col>
+              </v-col> 
 
               <!-- Expanded kısım -->
               <v-col v-if="expandedDialog">
@@ -238,20 +245,22 @@
 
             <!-- Talep Süreci Diyaloğu -->
             <v-row>
-              <v-card-text>
-                <v-container>
-                  <v-row>
-                    <v-col>
-                      <h3>Talep Süreci</h3>
-                    </v-col>
-                  </v-row>
-                  <v-row>
-                    <v-col>
+              <v-col>
+                <v-card-text>
+                  <v-container>
+                    <v-row>
+                      <v-col>
+                        <h3>Talep Süreci</h3>
+                      </v-col>
+                    </v-row>
+                    <v-row>
+                      <v-col>
 
-                    </v-col>
-                  </v-row>
-                </v-container>
-              </v-card-text>
+                      </v-col>
+                    </v-row>
+                  </v-container>
+                </v-card-text>
+              </v-col>
             </v-row>
           </v-container>
           
@@ -371,7 +380,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .v-text-field.v-text-field--enclosed .v-text-field__details {
   display: none;
 }
