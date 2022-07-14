@@ -56,11 +56,6 @@
 export default {
     props: {
         post: null
-    },
-    data () {
-        return {
-
-        }
     }
 }
 

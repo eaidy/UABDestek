@@ -5,7 +5,7 @@
         <v-row class="ma-4">
             <v-col cols="12">
                 <div class="header">
-                    Uygun Başlıklar Ata
+                    Uygun Başlıklar
                 </div>
                 <div>
                     <v-breadcrumbs
@@ -71,15 +71,15 @@
         >
           <v-card>
             <v-card-title class="text-h5 justify-center">
-              Talep
+              {{ ticketBuffer.subject}} - İlgili Makale
             </v-card-title>
             <v-divider></v-divider>
             <v-card-text>
-              <v-text-field
-                :value="ticketBuffer.subject"
-                readonly
-              >
-              </v-text-field>
+              <div class="related-article pa-3 ma-3">
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vitae erat odio. Suspendisse eget elit sit amet ex lacinia pulvinar. Nam eget accumsan ante. Etiam vitae congue ligula. Nulla malesuada tellus a nisl pharetra, ut pretium ipsum blandit. Fusce ultricies ac nunc ut scelerisque. Morbi quis gravida erat, quis facilisis tortor. Suspendisse vitae odio turpis. Donec viverra elit metus, a vehicula libero malesuada quis. Maecenas a nunc pulvinar, hendrerit augue et, scelerisque enim. Morbi vestibulum quam at nisi imperdiet varius. Ut convallis auctor neque, id mattis elit condimentum nec. Nulla vitae tincidunt nisi. Sed bibendum sagittis nisi id ultrices. Aenean.
+                </p>
+              </div>
             </v-card-text>
 
           </v-card>
@@ -259,6 +259,11 @@ export default {
 
 .topic:hover {
   background-color: #DDDDDD;
+}
+
+.related-article {
+  border: 1px solid gray;
+  border-radius: 5px;
 }
 
 </style>

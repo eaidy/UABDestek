@@ -83,15 +83,68 @@
       }"
     >
       <template #item.actions="{ item }">
-        <v-icon @click="answerDialog = true" small>
+        <v-tooltip bottom>
+          <template v-slot:activator="{ on, attrs }">
+            <v-icon
+              v-bind="attrs"
+              v-on="on"
+              small
+              @click="answerDialog = true"
+            >
+              mdi-pencil
+            </v-icon>
+          </template>
+          <span>Yanıtla</span>
+        </v-tooltip>
+        <v-tooltip bottom>
+          <template v-slot:activator="{ on, attrs }">
+            <v-icon
+              v-bind="attrs"
+              v-on="on"
+              small
+            >
+              mdi-close
+            </v-icon>
+          </template>
+          <span>Talebi Kapat</span>
+        </v-tooltip>
+        <v-tooltip bottom>
+          <template v-slot:activator="{ on, attrs }">
+            <v-icon
+              v-bind="attrs"
+              v-on="on"
+              small
+            >
+              mdi-delete
+            </v-icon>
+          </template>
+          <span>Talebi Sil</span>
+        </v-tooltip>
+        <v-tooltip bottom>
+          <template v-slot:activator="{ on, attrs }">
+            <v-icon
+              v-bind="attrs"
+              v-on="on"
+              small
+            >
+              mdi-share
+            </v-icon>
+          </template>
+          <span>Yönlendir</span>
+        </v-tooltip>
+        
+        <!-- <v-icon @click="answerDialog = true" small>
           mdi-pencil
-        </v-icon>
-        <v-icon @click="closeTicketValidation = true" small> <!-- Kapat -->
+        </v-icon> -->
+        <!-- <v-icon @click="closeTicketValidation = true" small> 
           mdi-close
         </v-icon>
-        <v-icon @click="deleteTicketValidation = true" small>  <!-- Sil -->
+        <v-icon @click="deleteTicketValidation = true" small>  
           mdi-delete
         </v-icon>
+        <v-icon @click="deleteTicketValidation = true" small>  
+          mdi-share
+        </v-icon> -->
       </template>
     </v-data-table>
 
@@ -127,8 +180,12 @@
                     </v-row>
                     <v-row>
                       <v-col>
-                        <v-text-field label="Konu" outlined class="mb-6"></v-text-field>
-                        <v-textarea label="Açıklama" outlined></v-textarea>
+                        <v-text-field 
+                          label="Konu" 
+                          outlined 
+                          class="mb-6"
+                          ></v-text-field>
+                        <v-textarea label="Yanıt" outlined></v-textarea>
                       </v-col>
                     </v-row>
                     <v-row>
@@ -145,8 +202,8 @@
                           </v-btn>
                           <v-spacer></v-spacer>
                           <div class="admin-ticket-expand-div">
-                            <span v-if="!expandedDialog" @click="expandedDialog = true" class="admin-ticket-expand">Detay >></span>
-                            <span v-if="expandedDialog" @click="expandedDialog = false" class="admin-ticket-expand">&lt&lt Kısalt</span>
+                            <span v-if="!expandedDialog" @click="expandedDialog = true" class="admin-ticket-expand">Gelişmiş >></span>
+                            <span v-if="expandedDialog" @click="expandedDialog = false" class="admin-ticket-expand">&lt&lt Varsayılan</span>
                           </div>
                         </div>
                       </v-col>
@@ -362,18 +419,18 @@ export default {
               { id: 2, date: '16/04/2022 12:10', exp: 'Nasıl bir hata alıyorsunuz ?', isAdmin: true, file: null},
               { id: 3, date: '16/04/2022 11:35', exp: 'Dosya sisteme aktarılamadı hatası alıyorum.', isAdmin: false, file: null},
               { id: 4, date: '17/04/2022 13:47', exp: 'KML Dosya boyutunu kontrol edip beni tekrar bilgilendirebilir misiniz ?', isAdmin: true, file: null},
-              { id: 4, date: '17/04/2022 13:47', exp: 'KML Dosyasını ekte paylaştım', isAdmin: false, file: 'KML Dosyası'},
+              { id: 5, date: '17/04/2022 13:47', exp: 'KML Dosyasını ekte paylaştım', isAdmin: false, file: 'KML Dosyası'},
 
             ],
             modules: [
-                "Modül 1",
-                "Modül 2",
-                "Modül 3"
+              'Modül 1',
+              'Modül 2',
+              'Modül 3'
             ],
             ticketTypes: [
-                "Şifre Değiştirme",
-                "Destek-Talep",
-                "Öneri-Şikayet"
+              'Şifre Değiştirme',
+              'Destek-Talep',
+              'Öneri-Şikayet'
             ],
             tags: [],
             people: [],
@@ -385,8 +442,8 @@ export default {
     },
     computed: {
         expandedWidth() {
-            return this.expandedDialog ? 1000 : 800;
-        }
+          return this.expandedDialog ? 1000 : 800;
+        },
     },
     methods: {
         addHandler(e) {
@@ -407,7 +464,7 @@ export default {
         },
         deletePerson(person) {
             this.people.splice(this.people.indexOf(person), 1);
-        }
+        },
     },
     components: { TicketHistoryPost }
 };
