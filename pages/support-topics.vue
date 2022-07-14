@@ -31,12 +31,14 @@
                         <v-icon class="mb-1">mdi-file-document-check</v-icon> Destek Talepleri
                     </div>
                     <v-divider></v-divider>
-                    <div class="ml-6 mt-4">
-                        <div v-for="ticket in tickets" :key="ticket.id" class="mb-1">
+                    <div class="ml-6 mt-4 pa-1">
+                        <div v-for="ticket in tickets" :key="ticket.id" class="ma-1 pa-1 topic">
+                          <div class="pa-1 ml-1">
                             <v-icon small>mdi-pencil</v-icon>
                             <span class="ml-2 list-element" @click="showTicket(ticket)">
                               {{ ticket.subject }}
                             </span>
+                          </div>
                         </div>
                     </div>
                 </div>
@@ -47,8 +49,9 @@
                         <v-icon class="mb-1">mdi-file-document-edit</v-icon> Öneri ve Şikayetler
                     </div>
                     <v-divider></v-divider>
-                    <div class="ml-6 mt-4">
-                        <div v-for="suggest in suggests" :key="suggest.id" class="mb-1">
+                    <div class="ml-6 mt-4 pa-1">
+                        <div v-for="suggest in suggests" :key="suggest.id" class="ma-1 pa-1 topic">
+                          <div class="pa-1 ml-1">
                             <v-icon small>mdi-pencil</v-icon>
                             <span 
                               class="ml-2 list-element"
@@ -56,6 +59,7 @@
                             >
                             {{ suggest.subject }}
                             </span>
+                          </div>  
                         </div>
                     </div>
                 </div>
@@ -66,9 +70,10 @@
           max-width="800"
         >
           <v-card>
-            <v-card-title class="text-h5">
+            <v-card-title class="text-h5 justify-center">
               Talep
             </v-card-title>
+            <v-divider></v-divider>
             <v-card-text>
               <v-text-field
                 :value="ticketBuffer.subject"
@@ -246,6 +251,14 @@ export default {
   background-color: #efefef;
   border-radius: 10px;
   margin: 0 10px;
+}
+
+.topic {
+  border-radius: 5px;
+}
+
+.topic:hover {
+  background-color: #DDDDDD;
 }
 
 </style>
