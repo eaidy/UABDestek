@@ -98,7 +98,7 @@
       <v-dialog v-model="answerDialog" :width="expandedWidth">
         <v-card>
           <v-card-title class="justify-center">
-            Talep Oluştur
+            Talep Yanıtla
           </v-card-title>
 
           <v-divider></v-divider>
@@ -108,19 +108,19 @@
                 <v-card-text class="mt-4">
                   <v-container>
                     <v-row>
-                      <v-col cols="6" class="">
+                      <v-col cols="6" class="pb-0">
                         <v-select 
                           label="Modül Seçiniz" 
                           outlined 
-                          class="mb-6"
+                          class="mb-4"
                           :items="modules"
                         ></v-select>
                       </v-col>
-                      <v-col cols="6">
+                      <v-col cols="6" class="pb-0">
                         <v-select 
                           label="Ticket Tipini Seçiniz" 
                           outlined 
-                          class="mb-6"
+                          class="mb-4"
                           :items="ticketTypes"
                         ></v-select>
                       </v-col>
@@ -128,10 +128,6 @@
                     <v-row>
                       <v-col>
                         <v-text-field label="Konu" outlined class="mb-6"></v-text-field>
-                      </v-col>
-                    </v-row>
-                    <v-row>
-                      <v-col>
                         <v-textarea label="Açıklama" outlined></v-textarea>
                       </v-col>
                     </v-row>
@@ -174,7 +170,7 @@
                     </v-row>
                     <!-- Talep Süreci Diyaloğu -->
                     <v-row>
-                      <v-col>
+                      <v-col class="px-0">
                         <v-card-text class="ticket-process">
                           <v-container class="pt-0">
                             <v-row class="ticket-process-header">
@@ -183,7 +179,7 @@
                               </v-col>
                             </v-row>
                             <v-row>
-                              <v-col>
+                              <v-col class="px-0">
                                 <v-container>
                                   <TicketHistoryPost v-for="post in posts" :key="post.id" :post="post" />
                                 </v-container>
@@ -204,10 +200,6 @@
                     <v-row>
                       <v-col>
                         <v-textarea label="Admin Notları" outlined></v-textarea>
-                      </v-col>
-                    </v-row>
-                    <v-row>
-                      <v-col>
                         <v-subheader>
                           Etiket eklemek için, etiket ismini yazıp 'Enter' tuşuna basınız.
                         </v-subheader>
@@ -226,7 +218,6 @@
                             @click="deleteHandler(tag)"
                           >{{ tag }}</span>
                         </div>
-
                       </v-col>
                     </v-row>
                     <!-- <v-row>
@@ -252,7 +243,7 @@
                       </v-col>
                     </v-row> -->
                     <v-row>
-                      <v-col>
+                      <v-col class="related-documents">
                         <v-subheader>İlgili Makaleleri İliştir</v-subheader>
                         <v-text-field
                           label="Arama"
@@ -260,6 +251,34 @@
                           v-model="ticketSearch"
                         >
                         </v-text-field>
+                        <v-checkbox
+                          v-model="checkbox"
+                          label="Projeden Kayıt Silme"
+                        ></v-checkbox>
+                        <v-checkbox
+                          v-model="checkbox"
+                          label="Kullanıcı Kaydı Silme - Video"
+                        ></v-checkbox>
+                        <v-checkbox
+                          v-model="checkbox"
+                          label="Satır Silme - Resimli Anlatım"
+                        ></v-checkbox>
+                        <v-checkbox
+                          v-model="checkbox"
+                          label="Ürün Silme"
+                        ></v-checkbox>
+                        <div class="justify-center">
+                          <v-btn
+                            class="elevation-0"
+                          >
+                          Seçilenleri Bağla
+                          </v-btn>
+                          <v-btn
+                            class="elevation-0"
+                          >
+                          Seçilenleri Çıkar
+                          </v-btn>
+                        </div>
                       </v-col>
                     </v-row>
                   </v-container>
@@ -339,10 +358,12 @@ export default {
                 }
             ],
             posts: [
-              { id: 1, date: '15/04/2022', exp: 'KML Dosyası yükleyemiyorum, yardımcı olabilir misiniz ?', isAdmin: false},
-              { id: 2, date: '16/04/2022', exp: 'Nasıl bir hata alıyorsunuz ?', isAdmin: true},
-              { id: 3, date: '16/04/2022', exp: 'Dosya sisteme aktarılamadı hatası alıyorum.', isAdmin: false},
-              { id: 4, date: '17/04/2022', exp: 'KML Dosya boyutunu kontrol edip beni tekrar bilgilendirebilir misiniz ?', isAdmin: true}
+              { id: 1, date: '15/04/2022 15:43', exp: 'KML Dosyası yükleyemiyorum, yardımcı olabilir misiniz ?', isAdmin: false, file: 'Hata.jpg'},
+              { id: 2, date: '16/04/2022 12:10', exp: 'Nasıl bir hata alıyorsunuz ?', isAdmin: true, file: null},
+              { id: 3, date: '16/04/2022 11:35', exp: 'Dosya sisteme aktarılamadı hatası alıyorum.', isAdmin: false, file: null},
+              { id: 4, date: '17/04/2022 13:47', exp: 'KML Dosya boyutunu kontrol edip beni tekrar bilgilendirebilir misiniz ?', isAdmin: true, file: null},
+              { id: 4, date: '17/04/2022 13:47', exp: 'KML Dosyasını ekte paylaştım', isAdmin: false, file: 'KML Dosyası'},
+
             ],
             modules: [
                 "Modül 1",
@@ -370,6 +391,7 @@ export default {
     methods: {
         addHandler(e) {
             if (!this.tags.includes(this.temp.tag)) {
+                this.temp.tag = '#' + this.temp.tag
                 this.tags.push(this.temp.tag);
             }
             this.temp.tag = "";
@@ -447,5 +469,11 @@ export default {
 .ticket-process-header {
   border-bottom: 1px solid;
   border-color: rgba(0, 0, 0, 0.12);
+}
+
+.related-documents {
+  border: 1px solid;
+  border-color: rgba(0, 0, 0, 0.12);
+  border-radius: 5px;
 }
 </style>
