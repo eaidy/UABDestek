@@ -42,10 +42,10 @@ export default {
 </script>
 
 <style lang="scss">
-.container {
-  width: 1400px;
-  max-width: 100%;
-}
+// .container {
+//   width: 1400px;
+//   max-width: 100%;
+// }
 .nav-btn a {
   color: #343434;
   text-decoration: none;

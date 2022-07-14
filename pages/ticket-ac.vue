@@ -7,6 +7,7 @@
       <v-text-field
         label="Aranacak Konu"
         placeholder="Arama Yapmak İstediğiniz Konu Giriniz"
+        v-model="searchInput"
         filled
         rounded
         dense
@@ -23,7 +24,7 @@
       </div>
 
       <div class="text-center">
-        <v-dialog v-model="dialog" width="800">
+        <v-dialog v-model="dialog" width="900">
           <v-card>
             <v-card-title class="justify-center"> Talep Oluştur </v-card-title>
 
@@ -51,8 +52,20 @@
                 </v-row>
               </v-container>
 
-              <v-text-field label="Konu" outlined class="mb-6"></v-text-field>
-              <v-textarea label="Açıklama" outlined></v-textarea>
+              <v-text-field 
+                label="Konu"
+                :value="searchInput"
+                outlined
+                class="mb-6"
+              >
+              </v-text-field>
+
+              <v-textarea 
+                label="Açıklama" 
+                outlined
+                height="300"
+              >
+              </v-textarea>
 
               <!-- <v-row>
               <v-col cols="6">
@@ -119,9 +132,6 @@
                     style="width: 300px"
                   ></v-file-input>
                 </div>
-                <v-btn color="primary" text @click="dialog = false">
-                  Çıkış
-                </v-btn>
               </div>
             </v-card-actions>
           </v-card>
@@ -136,6 +146,7 @@ export default {
   data() {
     return {
       dialog: false,
+      searchInput: '',
       modules: ["Modül 1", "Modül 2", "Modül 3"],
       ticketTypes: ["Şifre Değiştirme", "Destek-Talep", "Öneri-Şikayet"],
       tags: [],
@@ -170,14 +181,5 @@ export default {
 </script>
 
 <style>
-.tag {
-  border-radius: 4px;
-  border: solid 1px gray;
-  margin-right: 4px;
-  padding: 4px;
-}
 
-.tags {
-  padding-left: 4px;
-}
 </style>

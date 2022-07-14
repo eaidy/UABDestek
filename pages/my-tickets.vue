@@ -39,6 +39,7 @@ export default {
           sortable: true,
           value: "queue",
         },
+        { text: "Talep No.", value: "ticketno"},
         { text: "Tarih", value: "begindate" },
         { text: "Talep Sahibi", value: "ticketowner" },
         { text: "Kurumu", value: "institution" },
@@ -51,6 +52,7 @@ export default {
       tickets: [
         {
           queue: 1,
+          ticketno: 'TIC2034',
           begindate: '23.05.2022',
           ticketowner: 'Doruk Yormaz',
           institution: 'TCDD',

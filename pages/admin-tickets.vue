@@ -83,14 +83,14 @@
       }"
     >
       <template #item.actions="{ item }">
-        <v-icon text class="nav-btn" @click="answerDialog = true">
-          mdiPencil
+        <v-icon @click="answerDialog = true" small>
+          mdi-pencil
         </v-icon>
-        <v-icon> <!-- Kapat -->
-
+        <v-icon @click="closeTicketValidation = true" small> <!-- Kapat -->
+          mdi-close
         </v-icon>
-        <v-icon>  <!-- Sil -->
-
+        <v-icon @click="deleteTicketValidation = true" small>  <!-- Sil -->
+          mdi-delete
         </v-icon>
       </template>
     </v-data-table>
@@ -104,7 +104,7 @@
           <v-divider></v-divider>
           <v-container>
             <v-row>
-              <v-col class="">
+              <v-col class="vertical-rule" :class="{ bottomrule : expandedDialog }">
                 <v-card-text class="mt-4">
                   <v-container>
                     <v-row>
@@ -142,7 +142,7 @@
                           <v-btn
                             color="secondary"
                             text
-                            @click="dialog = false"
+                            @click="answerDialog = false"
                             class="ml-4"
                           >
                             İptal
@@ -168,9 +168,6 @@
                                 style="width: 300px;"
                               ></v-file-input>
                             </div>
-                            <v-btn color="primary" text @click="dialog = false">
-                              Çıkış
-                            </v-btn>
                           </div>
                         </v-card-actions>
                       </v-col>
@@ -180,7 +177,7 @@
               </v-col> 
 
               <!-- Expanded kısım -->
-              <v-col v-if="expandedDialog">
+              <v-col v-if="expandedDialog" :class="{ bottomrule : expandedDialog }">
                 <v-card-text class="mt-4">
                   <v-container>
                     <v-row>
@@ -190,6 +187,9 @@
                     </v-row>
                     <v-row>
                       <v-col>
+                        <v-subheader>
+                          Etiket eklemek için, etiket ismini yazıp 'Enter' tuşuna basınız.
+                        </v-subheader>
                         <v-text-field
                           label="Etiketler"
                           outlined
@@ -208,8 +208,11 @@
 
                       </v-col>
                     </v-row>
-                    <v-row>
+                    <!-- <v-row>
                       <v-col>
+                        <v-subheader>
+                          İlgili kişi eklemek için, kişinin ismini yazıp 'Enter' tuşuna basınız.
+                        </v-subheader>
                         <v-text-field 
                           label="İlgili Kişiler" 
                           outlined 
@@ -226,7 +229,7 @@
                           >{{ person }}</span>
                         </div>
                       </v-col>
-                    </v-row>
+                    </v-row> -->
                     <v-row>
                       <v-col>
                         <v-subheader>İlgili Makaleleri İliştir</v-subheader>
@@ -239,7 +242,7 @@
                       </v-col>
                     </v-row>
                   </v-container>
-                </v-card-text>
+                </v-card-text> 
               </v-col>
             </v-row>
 
@@ -255,7 +258,9 @@
                     </v-row>
                     <v-row>
                       <v-col>
-
+                        <v-container>
+                          <TicketHistoryPost v-for="post in posts" :key="post.id" :post="post" />
+                        </v-container>
                       </v-col>
                     </v-row>
                   </v-container>
@@ -270,113 +275,119 @@
 </template>
 
 <script>
+import TicketHistoryPost from '~/components/TicketHistoryPost.vue';
 export default {
-  data() {
-    return {
-      answerDialog: false,
-      expandedDialog: false,
-      ticketSearch: '',
-      headers: [
-        {
-          text: "Sıra",
-          align: "center",
-          sortable: true,
-          value: "queue",
-        },
-        { text: "Talep No.", value: "ticketno"},
-        { text: "Tarih", value: "begindate" },
-        { text: "Talep Sahibi", value: "ticketowner" },
-        { text: "Kurumu", value: "institution" },
-        { text: "Talep", value: "ticketsubject" },
-        { text: "Sorumlu", value: "personincharge" },
-        { text: "Onaylayan", value: "confirmer" },
-        { text: "Durumu", value: "state" },
-        { text: "Tarih", value: "enddate" },
-        { text: 'Actions', value: 'actions', sortable: false }
-      ],
-      tickets: [
-        {
-          queue: 1,
-          ticketno: "TIC1001",
-          begindate: '23.05.2022',
-          ticketowner: 'Doruk Yormaz',
-          institution: 'TCDD',
-          ticketsubject: 'KML dosyası yükleyememe problemi',
-          personincharge: 'Bensu Keşap',
-          confirmer: 'Cem Karakuş',
-          state: 'DOĞRU',
-          enddate: '23.05.2022'
-        },
-        { 
-          queue: 2,
-          ticketno: "TIC2038",
-          begindate: '23.05.2022',
-          ticketowner: 'Elif Atar',
-          institution: 'TCDD',
-          ticketsubject: 'Proje veri girememe problemi',
-          personincharge: 'Bensu Keşap',
-          confirmer: 'Cem Karakuş',
-          state: 'DOĞRU',
-          enddate: '23.05.2022'
-        },
-        {
-          queue: 3,
-          ticketno: "TIC1587",
-          begindate: '23.05.2022',
-          ticketowner: 'Önder Çelik',
-          institution: 'TCDD',
-          ticketsubject: 'Yeni yüklenici eklenmesi talebi',
-          personincharge: 'Bensu Keşap',
-          confirmer: 'Cem Karakuş',
-          state: 'DOĞRU',
-          enddate: '23.05.2022'
-        }
-      ],
-      modules: [
-        'Modül 1',
-        'Modül 2',
-        'Modül 3'
-      ],
-      ticketTypes: [
-        'Şifre Değiştirme',
-        'Destek-Talep',
-        'Öneri-Şikayet'
-      ],
-      tags: [],
-      people: [],
-      temp: {
-        tag: '',
-        person: ''
-      }
-    };
-  },
-
-  computed: {
-    expandedWidth () {
-      return this.expandedDialog ? 1000 : 800
-    }
-  },
-
-  methods: {
-    addHandler (e) {
-        if ( !this.tags.includes(this.temp.tag) ){
-          this.tags.push(this.temp.tag)
-        }
-        this.temp.tag = ''
+    data() {
+        return {
+            answerDialog: false,
+            expandedDialog: false,
+            ticketSearch: "",
+            headers: [
+                {
+                    text: "Sıra",
+                    align: "center",
+                    sortable: true,
+                    value: "queue",
+                },
+                { text: "Talep No.", value: "ticketno" },
+                { text: "Tarih", value: "begindate" },
+                { text: "Talep Sahibi", value: "ticketowner" },
+                { text: "Kurumu", value: "institution" },
+                { text: "Talep", value: "ticketsubject" },
+                { text: "Sorumlu", value: "personincharge" },
+                { text: "Onaylayan", value: "confirmer" },
+                { text: "Durumu", value: "state" },
+                { text: "Tarih", value: "enddate" },
+                { text: "Actions", value: "actions", sortable: false }
+            ],
+            tickets: [
+                {
+                    queue: 1,
+                    ticketno: "TIC1001",
+                    begindate: "23.05.2022",
+                    ticketowner: "Doruk Yormaz",
+                    institution: "TCDD",
+                    ticketsubject: "KML dosyası yükleyememe problemi",
+                    personincharge: "Bensu Keşap",
+                    confirmer: "Cem Karakuş",
+                    state: "DOĞRU",
+                    enddate: "23.05.2022"
+                },
+                {
+                    queue: 2,
+                    ticketno: "TIC2038",
+                    begindate: "23.05.2022",
+                    ticketowner: "Elif Atar",
+                    institution: "TCDD",
+                    ticketsubject: "Proje veri girememe problemi",
+                    personincharge: "Bensu Keşap",
+                    confirmer: "Cem Karakuş",
+                    state: "DOĞRU",
+                    enddate: "23.05.2022"
+                },
+                {
+                    queue: 3,
+                    ticketno: "TIC1587",
+                    begindate: "23.05.2022",
+                    ticketowner: "Önder Çelik",
+                    institution: "TCDD",
+                    ticketsubject: "Yeni yüklenici eklenmesi talebi",
+                    personincharge: "Bensu Keşap",
+                    confirmer: "Cem Karakuş",
+                    state: "DOĞRU",
+                    enddate: "23.05.2022"
+                }
+            ],
+            posts: [
+              { id: 1, exp: 'Açıklama 1', isAdmin: false},
+              { id: 2, exp: 'Açıklama 2', isAdmin: true},
+              { id: 3, exp: 'Açıklama 3', isAdmin: false},
+              { id: 4, exp: 'Açıklama 3', isAdmin: false}
+            ],
+            modules: [
+                "Modül 1",
+                "Modül 2",
+                "Modül 3"
+            ],
+            ticketTypes: [
+                "Şifre Değiştirme",
+                "Destek-Talep",
+                "Öneri-Şikayet"
+            ],
+            tags: [],
+            people: [],
+            temp: {
+                tag: "",
+                person: ""
+            }
+        };
     },
-    deleteHandler (tag) {
-      this.tags.splice(this.tags.indexOf(tag), 1)
-    },
-    addPerson () {
-        if ( !this.people.includes(this.temp.person) ){
-          this.people.push(this.temp.person)
+    computed: {
+        expandedWidth() {
+            return this.expandedDialog ? 1000 : 800;
         }
-        this.temp.person = ''
     },
-    deletePerson (person) {
-      this.people.splice(this.people.indexOf(person), 1)
-    }
-  }
+    methods: {
+        addHandler(e) {
+            if (!this.tags.includes(this.temp.tag)) {
+                this.tags.push(this.temp.tag);
+            }
+            this.temp.tag = "";
+        },
+        deleteHandler(tag) {
+            this.tags.splice(this.tags.indexOf(tag), 1);
+        },
+        addPerson() {
+            if (!this.people.includes(this.temp.person)) {
+                this.people.push(this.temp.person);
+            }
+            this.temp.person = "";
+        },
+        deletePerson(person) {
+            this.people.splice(this.people.indexOf(person), 1);
+        }
+    },
+    components: { TicketHistoryPost }
 };
 </script>
 
@@ -405,8 +416,9 @@ export default {
 }
 
 .tag {
-  border-radius: 4px;
-  border: solid 1px gray;
+  border-radius: 5px;
+  border-bottom: solid 1px gray;
+  border-left: solid 1px gray;
   margin-right: 4px;
   padding: 4px;
 }
@@ -419,5 +431,10 @@ export default {
   border-bottom: 1px solid;
   border-color: rgba(0, 0, 0, 0.12);
 
+}
+
+.bottomrule {
+  border-bottom: 1px solid;
+  border-color: rgba(0, 0, 0, 0.12);
 }
 </style>
