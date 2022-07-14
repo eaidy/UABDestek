@@ -1,13 +1,23 @@
 <template>
     <v-row>
-        <v-col cols="6">
-            <div v-if="!post.isAdmin" class="post post-client ml-2">
-                <span>{{ post.exp }}</span>
+        <v-col cols="6" class="pl-0">
+            <div v-if="!post.isAdmin" class="post post-client ml-2 pb-1">
+                <div>
+                    <span>{{ post.exp }}</span>
+                </div>
+                <div class="post-info-box justify-end">
+                    <span>{{ post.date }}</span>
+                </div>
             </div>
         </v-col>
-        <v-col cols="6">
-            <div v-if="post.isAdmin" class="post post-admin mr-2">
-                <span>{{ post.exp }}</span>
+        <v-col cols="6" class="pr-0">
+            <div v-if="post.isAdmin" class="post post-admin mr-2 pb-1">
+                 <div>
+                    <span>{{ post.exp }}</span>
+                </div>
+                <div class="post-info-box justify-end">
+                    <span>{{ post.date }}</span>
+                </div>
             </div>
         </v-col>
     </v-row>
@@ -31,10 +41,14 @@ export default {
 <style scoped>
 
 .post {
-    border: 1px solid gray;
     border-radius: 5px;
     padding: 8px;
-    background-color: #F1EEE9;
+    background-color: #F7F5F2;
 }
 
+.post-info-box {
+    display: flex;
+    font-size: 0.7em;
+    margin-top: 4px;
+}
 </style>

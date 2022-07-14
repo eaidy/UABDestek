@@ -149,8 +149,8 @@
                           </v-btn>
                           <v-spacer></v-spacer>
                           <div class="admin-ticket-expand-div">
-                            <span v-if="!expandedDialog.stop" @click="expandedDialog = true" class="admin-ticket-expand">Detay >></span>
-                            <span v-if="expandedDialog.stop" @click="expandedDialog = false" class="admin-ticket-expand">&lt&lt Kısalt</span>
+                            <span v-if="!expandedDialog" @click="expandedDialog = true" class="admin-ticket-expand">Detay >></span>
+                            <span v-if="expandedDialog" @click="expandedDialog = false" class="admin-ticket-expand">&lt&lt Kısalt</span>
                           </div>
                         </div>
                       </v-col>
@@ -175,11 +175,11 @@
                     <!-- Talep Süreci Diyaloğu -->
                     <v-row>
                       <v-col>
-                        <v-card-text>
-                          <v-container>
-                            <v-row>
+                        <v-card-text class="ticket-process">
+                          <v-container class="pt-0">
+                            <v-row class="ticket-process-header">
                               <v-col>
-                                <h3>Talep Süreci</h3>
+                                <h3 class="font-weight-regular text-center">Talep Süreci</h3>
                               </v-col>
                             </v-row>
                             <v-row>
@@ -339,10 +339,10 @@ export default {
                 }
             ],
             posts: [
-              { id: 1, exp: 'Açıklama 1', isAdmin: false},
-              { id: 2, exp: 'Açıklama 2', isAdmin: true},
-              { id: 3, exp: 'Açıklama 3', isAdmin: false},
-              { id: 4, exp: 'Açıklama 3', isAdmin: false}
+              { id: 1, date: '15/04/2022', exp: 'KML Dosyası yükleyemiyorum, yardımcı olabilir misiniz ?', isAdmin: false},
+              { id: 2, date: '16/04/2022', exp: 'Nasıl bir hata alıyorsunuz ?', isAdmin: true},
+              { id: 3, date: '16/04/2022', exp: 'Dosya sisteme aktarılamadı hatası alıyorum.', isAdmin: false},
+              { id: 4, date: '17/04/2022', exp: 'KML Dosya boyutunu kontrol edip beni tekrar bilgilendirebilir misiniz ?', isAdmin: false}
             ],
             modules: [
                 "Modül 1",
@@ -434,6 +434,17 @@ export default {
 }
 
 .bottomrule {
+  border-bottom: 1px solid;
+  border-color: rgba(0, 0, 0, 0.12);
+}
+
+.ticket-process {
+  border: 1px solid;
+  border-color: rgba(0, 0, 0, 0.12);
+  border-radius: 5px;
+}
+
+.ticket-process-header {
   border-bottom: 1px solid;
   border-color: rgba(0, 0, 0, 0.12);
 }
