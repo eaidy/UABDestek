@@ -2,7 +2,7 @@
   <section class="search-bg search-bg--full">
     <v-container class="mt-15">
       <div class="text-center mb-15">
-        <h1 class="page-title">UAB-UYS DESTEK TALEP SİSTEMİ</h1>
+        <h1 class="title">UAB-UYS DESTEK TALEP SİSTEMİ</h1>
       </div>
       <v-text-field
         label="Aranacak Konu"

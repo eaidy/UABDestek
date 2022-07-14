@@ -3,6 +3,7 @@
     <section class="search-bg">
       <v-container>
         <v-row class="ma-4">
+<<<<<<< HEAD
             <v-col cols="12">
                 <div class="header">
                     Uygun Başlıklar Ata
@@ -56,25 +57,43 @@
                     </div>
                 </div>
             </v-col>
+=======
+          <v-col cols="12">
+            <div class="text-center">
+              <div class="page-title">Uygun Başlıklar</div>
+              <div>
+                <v-breadcrumbs
+                  :items="links"
+                  divider="/"
+                  class="justify-center"
+                ></v-breadcrumbs>
+              </div>
+            </div>
+            <v-divider></v-divider>
+            <br />
+            <v-text-field
+              label="Arama"
+              placeholder="Arama Yapmak İstediğiniz Konu Giriniz"
+              background-color="#fff"
+              outlined
+            ></v-text-field>
+          </v-col>
+>>>>>>> parent of f83503b (tema)
         </v-row>
       </v-container>
     </section>
     <v-container class="mt-8">
       <v-row class="">
         <v-col col="6">
-          <div class="default-card-plain">
-            <div class="sub-header mb-3">
+          <div class="default-card">
+            <div class="sub-header ml-3 mb-3">
               <v-icon class="mb-1">mdi-file-document-check</v-icon> Destek
               Talepleri
             </div>
             <v-divider></v-divider>
-            <div class="mt-4">
-              <div
-                v-for="ticket in tickets"
-                :key="ticket.id"
-                class="topic-list-item"
-              >
-                <v-icon small>mdi-file-document</v-icon>
+            <div class="ml-6 mt-4">
+              <div v-for="ticket in tickets" :key="ticket.id" class="mb-1">
+                <v-icon small>mdi-pencil</v-icon>
                 <span class="ml-2 list-element">
                   <a href="/support-topics">
                     {{ ticket.subject }}
@@ -85,19 +104,15 @@
           </div>
         </v-col>
         <v-col col="6">
-          <div class="default-card-plain">
-            <div class="sub-header mb-3">
+          <div class="default-card">
+            <div class="sub-header ml-3 mb-3">
               <v-icon class="mb-1">mdi-file-document-edit</v-icon> Öneri ve
               Şikayetler
             </div>
             <v-divider></v-divider>
-            <div class="mt-4">
-              <div
-                v-for="suggest in suggests"
-                :key="suggest.id"
-                class="topic-list-item"
-              >
-                <v-icon small>mdi-file-document</v-icon
+            <div class="ml-6 mt-4">
+              <div v-for="suggest in suggests" :key="suggest.id" class="mb-1">
+                <v-icon small>mdi-pencil</v-icon
                 ><span class="ml-2 list-element"
                   ><a href="/support-topics">{{ suggest.subject }}</a></span
                 >
