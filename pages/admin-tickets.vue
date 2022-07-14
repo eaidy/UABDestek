@@ -149,8 +149,8 @@
                           </v-btn>
                           <v-spacer></v-spacer>
                           <div class="admin-ticket-expand-div">
-                            <span v-if="!expandedDialog" @click="expandedDialog = true" class="admin-ticket-expand">Detay >></span>
-                            <span v-if="expandedDialog" @click="expandedDialog = false" class="admin-ticket-expand">&lt&lt Kısalt</span>
+                            <span v-if="!expandedDialog.stop" @click="expandedDialog = true" class="admin-ticket-expand">Detay >></span>
+                            <span v-if="expandedDialog.stop" @click="expandedDialog = false" class="admin-ticket-expand">&lt&lt Kısalt</span>
                           </div>
                         </div>
                       </v-col>
@@ -170,6 +170,27 @@
                             </div>
                           </div>
                         </v-card-actions>
+                      </v-col>
+                    </v-row>
+                    <!-- Talep Süreci Diyaloğu -->
+                    <v-row>
+                      <v-col>
+                        <v-card-text>
+                          <v-container>
+                            <v-row>
+                              <v-col>
+                                <h3>Talep Süreci</h3>
+                              </v-col>
+                            </v-row>
+                            <v-row>
+                              <v-col>
+                                <v-container>
+                                  <TicketHistoryPost v-for="post in posts" :key="post.id" :post="post" />
+                                </v-container>
+                              </v-col>
+                            </v-row>
+                          </v-container>
+                        </v-card-text>
                       </v-col>
                     </v-row>
                   </v-container>
@@ -246,27 +267,6 @@
               </v-col>
             </v-row>
 
-            <!-- Talep Süreci Diyaloğu -->
-            <v-row>
-              <v-col>
-                <v-card-text>
-                  <v-container>
-                    <v-row>
-                      <v-col>
-                        <h3>Talep Süreci</h3>
-                      </v-col>
-                    </v-row>
-                    <v-row>
-                      <v-col>
-                        <v-container>
-                          <TicketHistoryPost v-for="post in posts" :key="post.id" :post="post" />
-                        </v-container>
-                      </v-col>
-                    </v-row>
-                  </v-container>
-                </v-card-text>
-              </v-col>
-            </v-row>
           </v-container>
           
         </v-card>

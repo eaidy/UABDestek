@@ -34,10 +34,8 @@
                     <div class="ml-6 mt-4">
                         <div v-for="ticket in tickets" :key="ticket.id" class="mb-1">
                             <v-icon small>mdi-pencil</v-icon>
-                            <span class="ml-2 list-element">
-                                <a href="/support-topics">
-                                    {{ ticket.subject }}
-                                </a>
+                            <span class="ml-2 list-element" @click="showTicket(ticket)">
+                              {{ ticket.subject }}
                             </span>
                         </div>
                     </div>
@@ -51,12 +49,36 @@
                     <v-divider></v-divider>
                     <div class="ml-6 mt-4">
                         <div v-for="suggest in suggests" :key="suggest.id" class="mb-1">
-                            <v-icon small>mdi-pencil</v-icon><span class="ml-2 list-element"><a href="/support-topics">{{ suggest.subject }}</a></span>
+                            <v-icon small>mdi-pencil</v-icon>
+                            <span 
+                              class="ml-2 list-element"
+                              @click="showTicket(suggest)"
+                            >
+                            {{ suggest.subject }}
+                            </span>
                         </div>
                     </div>
                 </div>
             </v-col>
         </v-row>
+        <v-dialog
+          v-model="ticketDialog"
+          max-width="800"
+        >
+          <v-card>
+            <v-card-title class="text-h5">
+              Talep
+            </v-card-title>
+            <v-card-text>
+              <v-text-field
+                :value="ticketBuffer.subject"
+                readonly
+              >
+              </v-text-field>
+            </v-card-text>
+
+          </v-card>
+        </v-dialog>
       </v-container>
     </section>
   </div>
@@ -66,6 +88,8 @@
 export default {
   data() {
     return {
+      ticketDialog: false,
+      ticketBuffer: {},
       links: [
         {
           text: "Destek-Talep",
@@ -97,32 +121,32 @@ export default {
           exp: "Lorem ipsum narem pipsum",
         },
         {
-          ticketNo: 1,
+          ticketNo: 4,
           subject: "Modül 2 içerisindeki yazılım hatası",
           exp: "Lorem ipsum narem pipsum",
         },
         {
-          ticketNo: 2,
+          ticketNo: 5,
           subject: "Proje editleme sorunu ile ilgili",
           exp: "Lorem ipsum narem pipsum",
         },
         {
-          ticketNo: 3,
+          ticketNo: 6,
           subject: "KML Dosyası eklerken hata alıyorum",
           exp: "Lorem ipsum narem pipsum",
         },
         {
-          ticketNo: 1,
+          ticketNo: 7,
           subject: "Modül 2 içerisindeki yazılım hatası",
           exp: "Lorem ipsum narem pipsum",
         },
         {
-          ticketNo: 2,
+          ticketNo: 8,
           subject: "Proje editleme sorunu ile ilgili",
           exp: "Lorem ipsum narem pipsum",
         },
         {
-          ticketNo: 3,
+          ticketNo: 9,
           subject: "KML Dosyası eklerken hata alıyorum",
           exp: "Lorem ipsum narem pipsum",
         },
@@ -144,38 +168,49 @@ export default {
           exp: "Lorem ipsum narem pipsum",
         },
         {
-          ticketNo: 1,
+          ticketNo: 4,
           subject: "Proje yönetim sistemi ekranı ile ilgili önerim",
           exp: "Lorem ipsum narem pipsum",
         },
         {
-          ticketNo: 2,
+          ticketNo: 5,
           subject: "Destek taleplerinin daha hızlı sonuçlanması gerekiyor",
           exp: "Lorem ipsum narem pipsum",
         },
         {
-          ticketNo: 3,
+          ticketNo: 6,
           subject: "Kullanıcı arayüzündeki ergonomik eksiklikler",
           exp: "Lorem ipsum narem pipsum",
         },
         {
-          ticketNo: 1,
+          ticketNo: 7,
           subject: "Proje yönetim sistemi ekranı ile ilgili önerim",
           exp: "Lorem ipsum narem pipsum",
         },
         {
-          ticketNo: 2,
+          ticketNo: 8,
           subject: "Destek taleplerinin daha hızlı sonuçlanması gerekiyor",
           exp: "Lorem ipsum narem pipsum",
         },
         {
-          ticketNo: 3,
+          ticketNo: 9,
           subject: "Kullanıcı arayüzündeki ergonomik eksiklikler",
           exp: "Lorem ipsum narem pipsum",
         },
       ],
     };
   },
+
+  methods: {
+    showTicket (info) {
+      this.ticketBuffer = info
+      this.ticketDialog = true
+    },
+    closeTicket () {
+      this.ticketBuffer = {},
+      this.ticketDialog = false
+    }
+  }
 };
 </script>
 
@@ -191,19 +226,20 @@ export default {
   color: #413f42;
 }
 
-.list-element {
+.list-element{
   font-size: 0.95em;
   color: #413f42;
 }
 
-.list-element a {
+.list-element{
   text-decoration: none;
   color: #7f8487;
 }
 
-.list-element a:hover {
+.list-element:hover {
   text-decoration: none;
   color: #413f42;
+  cursor: pointer;
 }
 
 .items-section {

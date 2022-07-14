@@ -33,7 +33,8 @@ export default {
 .post {
     border: 1px solid gray;
     border-radius: 5px;
-    padding: 5px;
+    padding: 8px;
+    background-color: #F1EEE9;
 }
 
 </style>
