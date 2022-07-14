@@ -342,7 +342,7 @@ export default {
               { id: 1, date: '15/04/2022', exp: 'KML Dosyası yükleyemiyorum, yardımcı olabilir misiniz ?', isAdmin: false},
               { id: 2, date: '16/04/2022', exp: 'Nasıl bir hata alıyorsunuz ?', isAdmin: true},
               { id: 3, date: '16/04/2022', exp: 'Dosya sisteme aktarılamadı hatası alıyorum.', isAdmin: false},
-              { id: 4, date: '17/04/2022', exp: 'KML Dosya boyutunu kontrol edip beni tekrar bilgilendirebilir misiniz ?', isAdmin: false}
+              { id: 4, date: '17/04/2022', exp: 'KML Dosya boyutunu kontrol edip beni tekrar bilgilendirebilir misiniz ?', isAdmin: true}
             ],
             modules: [
                 "Modül 1",

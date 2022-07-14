@@ -1,7 +1,25 @@
 <template>
     <v-row>
-        <v-col cols="6" class="pl-0">
-            <div v-if="!post.isAdmin" class="post post-client ml-2 pb-1">
+        <v-col class="px-0">
+            <div v-if="!post.isAdmin" class="post post-client pb-1 mr-12">
+                <div>
+                    <span>{{ post.exp }}</span>
+                </div>
+                <div class="post-info-box justify-end">
+                    <span>Kullanıcı &nbsp</span>|<span>&nbsp{{ post.date }}</span>
+                </div>
+            </div>
+            <div v-else class="post post-admin pb-1 ml-12">
+                <div>
+                    <span>{{ post.exp }}</span>
+                </div>
+                <div class="post-info-box justify-end">
+                    <span>Destek Ekibi &nbsp</span>|<span>&nbsp{{ post.date }}</span>
+                </div>
+            </div>
+        </v-col>
+        <!-- <v-col cols="6" class="pa-1">
+            <div v-if="!post.isAdmin" class="post post-client pb-1">
                 <div>
                     <span>{{ post.exp }}</span>
                 </div>
@@ -10,8 +28,8 @@
                 </div>
             </div>
         </v-col>
-        <v-col cols="6" class="pr-0">
-            <div v-if="post.isAdmin" class="post post-admin mr-2 pb-1">
+        <v-col cols="6" class="pa-1">
+            <div v-if="post.isAdmin" class="post post-admin pb-1">
                  <div>
                     <span>{{ post.exp }}</span>
                 </div>
@@ -19,7 +37,7 @@
                     <span>{{ post.date }}</span>
                 </div>
             </div>
-        </v-col>
+        </v-col> -->
     </v-row>
 </template>
 
